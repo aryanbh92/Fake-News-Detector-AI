@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f6f2">
+    <meta name="description" content="A careful first-pass tool for spotting language patterns worth verifying in an article.">
+    <title>Fake News Detector - Article review assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Fake News Detector home">
+        <span class="brand-mark" aria-hidden="true">F</span>
+        <span>Fake News <span class="brand-light">Detector</span></span>
+      </a>
+      <span class="topbar-note"><span class="status-dot"></span> A careful first look</span>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p class="eyebrow">READ WITH MORE CONFIDENCE</p>
+        <h1>Pause. Check the signals.</h1>
+        <p class="intro-copy">Paste an article or claim to find sentences that may state verifiable facts. Use the results as a starting point for verification—not a verdict.</p>
+      </section>
+
+      <section class="workspace" aria-label="Article analysis">
+        <form class="input-card" id="analyze-form">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">01 / ARTICLE TEXT</p>
+              <h2>What are you reading?</h2>
+            </div>
+            <button class="text-button" type="button" id="sample-button">Try a sample <span aria-hidden="true">↗</span></button>
+          </div>
+          <label class="visually-hidden" for="article-text">Paste article text or a claim</label>
+          <textarea id="article-text" name="article" maxlength="12000" placeholder="Paste a headline, claim, or a few paragraphs here…" required></textarea>
+          <div class="input-footer">
+            <span id="char-count">0 / 12,000 characters</span>
+            <button class="analyze-button" type="submit">Review signals <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="analysis-status" id="analysis-status" role="status" aria-live="polite" hidden></p>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+        </form>
+
+        <aside class="privacy-note">
+          <span class="lock-icon" aria-hidden="true">◇</span>
+          <p><strong>Your text is sent to Hugging Face for analysis.</strong> The request uses a server-side function; your API token stays on the server and is not sent to the browser.</p>
+        </aside>
+
+        <section class="results-card" id="results" aria-live="polite" aria-labelledby="result-title" hidden>
+          <div class="result-top">
+            <div>
+              <p class="eyebrow">02 / FIRST-PASS REVIEW</p>
+              <h2 id="result-title">Signals to consider</h2>
+            </div>
+            <span class="review-badge"><span aria-hidden="true">!</span> Verify independently</span>
+          </div>
+          <p class="result-summary" id="result-summary"></p>
+          <div class="signals" id="signals"></div>
+          <div class="next-steps">
+            <p class="eyebrow">A GOOD NEXT STEP</p>
+            <ul>
+              <li>Find the original source and check the publication date.</li>
+              <li>Look for independent, reputable sources reporting the same claim.</li>
+              <li>Open cited studies or documents and read beyond the headline.</li>
+            </ul>
+          </div>
+          <p class="disclaimer">The model estimates whether a sentence resembles a factual claim; it does not check if the claim is true, verify sources, or assess the publisher. Results can be wrong. Verify independently.</p>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <span>Fake News Detector <span aria-hidden="true">·</span> A media-literacy prototype</span>
+      <span>Curiosity before certainty.</span>
+    </footer>
+  </body>
+</html>
